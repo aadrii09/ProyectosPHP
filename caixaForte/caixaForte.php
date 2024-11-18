@@ -13,45 +13,77 @@ Neste exercicio, cada vez que se envíe a información do formulario deberase de
 As mensaxes de erro e éxito deberán mostrarse con estilos distintos que axuden a transmitir a información correspondente.
 </h1>
 
-<form action="caixaForte.php" method="post">
+<form  method="post">
         <label for="Introduce numeros">Introduce numeros</label>
-        <input type="number" name="numero">
-        <input type="submit" name="Enviar" id="botonEnviar">
-    </form>
+        <input type="password" name="numero">
+      
     
     <?php
 
 $numeroSecreto = 116900;
-$numeroIntentos = 0;
+$numeroSecretoStr = (string)$numeroSecreto; // Convierte a cadena
+
+
+
+$numeroIntentos = isset($_POST["numeroIntentos"])? $_POST["numeroIntentos"]: 0;
+$botonHidden = "";
 if(isset($_POST["numero"])){
 $numeroIntroducido = $_POST["numero"];
+$numeroIntroducidoStr = (string)$numeroIntroducido;
 $numeroIntentos++;
-if($numeroSecreto == $numeroIntroducido && $numeroIntentos <= 4){
+
+if($numeroIntentos == 4){
+    $botonHidden = "hidden";
+}
+//con los 3 iguales compara el valor y tipo de dato,
+ if($numeroSecretoStr === $numeroIntroducidoStr && $numeroIntentos <= 4){
+    $botonHidden = "hidden";
     echo"Has acertado!¿Cómo lo supiste?";
     }else if($numeroIntentos == 1 ){
-        echo"No has acertado";
-        echo $numeroIntentos;
+        echo"No has acertado, tienes mas intentos";
+       
     }
-    else if($numeroIntentos > 1){
+    else if($numeroIntentos > 1 && $numeroIntentos <= 3){
         echo "Has vuelto a fallar, intentalo de nuevo";
-    }else if($numeroIntentos >= 4){
+    }else if($numeroIntentos == 4){
         echo "Has fallado, ya no quedan mas oportunidades";
         
-}
+} 
 }
 
 
 ?>
+<input type="hidden" name="numeroIntentos" value="<?php  echo $numeroIntentos ;   ?>">
+ <input type="submit" name="Enviar" id="botonEnviar" <?php  echo $botonHidden ;   ?>  >
+ </form>
 </body>
 </html>
 
-<!-- esto sirve para cuando llegue a los 4 intentos se desactive el boton de enviar -->
-<script>
-    <?php
-if($numeroIntentos >= 4):?>
-    document.getElementById("botonEnviar").disabled=true;
-    <?php
-    endif;
-    ?>
-    
-</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
