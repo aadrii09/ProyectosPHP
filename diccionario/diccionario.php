@@ -15,7 +15,7 @@
 
     <form action="diccionario.php">
         <label for="Introduce una palabra">Introduce una palabra</label>
-        <input type="text" name="palabra">
+        <input type="text" name="palabra" value=<?php echo $_GET["palabra"] ?? ""; ?>>
         <input type="submit" name="Enviar">
     </form>
 
