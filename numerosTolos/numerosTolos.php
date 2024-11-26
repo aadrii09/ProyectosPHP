@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/globalStyles.css">
     <title>Numero Tolos</title>
 </head>
 <style>
@@ -29,17 +30,17 @@ Os números teñen que mostrarse con varios estilos diferenciados seguindo as se
 <form action="numerosTolos.php">
         <label for="Introduce un numero">Introduce el numero de numeros que quieres generar</label>
         <input type="number" name="valor">
+        <input type="submit" name="Enviar">
     </form>
 
 <?php
 
 if(isset($_GET["valor"])){
     $numeroIntroducido = $_GET["valor"];
-    echo $numeroIntroducido . " ";
     for($i = 0; $i < $numeroIntroducido; $i++){
         $arrayNumeros[] = rand(-100, 100);
     }
-    echo print_r( $arrayNumeros );
+   
 
 
 echo"<table>";
@@ -51,7 +52,6 @@ foreach($arrayNumeros as $numero ){
      
     $colorCondicion = ($colorFila == "celda1")? "celda2":"celda1";
     $colorFila = $colorCondicion;
-    echo $colorCondicion;
     echo"<tr class='$colorCondicion'>";
     echo"<td class='$numeroCondicion $numeroCondicion2'>$numero</td>";
     echo"</tr>";

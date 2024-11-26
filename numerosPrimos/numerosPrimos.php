@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/globalStyles.css">
     <title>Numeros Primos</title>
 </head>
 <body>
@@ -35,7 +36,7 @@ Ao enviar a información, deberemos mostrar todos os números primos que están 
 
             for( $i = $valor; $i <= $valor2; $i++){
                 if(esPrimo($i)==true){
-                    echo"<p>$i es primo</p>";
+                    echo"<br> $i es primo  <br>";
                     //esto es para mostrar los que no son primos tambien
                /*  }else{
                     echo"<p>$i no es primo</p>"; */
