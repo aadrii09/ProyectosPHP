@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Diccionario</title>
 </head>
 
 <body>
@@ -22,14 +22,15 @@
     <?php
 
     if (isset($_GET["palabra"])) {
-        $palabraTraducir = $_GET["palabra"];
+       $palabraTraducir = strtolower($_GET["palabra"]);
+       
 
         $arrayPalbras = array(
             "auga" => "water",
             "fogo" => "fire",
             "vento" => "wind",
             "terra" => "earth",
-            "ar" => "air",
+            "aire" => "air",
             "árbore" => "tree",
             "flor" => "flower",
             "mar" => "sea",
